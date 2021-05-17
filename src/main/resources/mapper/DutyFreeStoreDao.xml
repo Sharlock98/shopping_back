@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.shopping_back.dao.DutyFreeStoreDao">
+  <resultMap id="BaseResultMap" type="com.example.shopping_back.entity.DutyFreeStore">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="country" jdbcType="CHAR" property="country" />
+    <result column="chineseName" jdbcType="CHAR" property="chinesename" />
+    <result column="nationalFlag" jdbcType="CHAR" property="nationalflag" />
+    <result column="img" jdbcType="VARCHAR" property="img" />
+    <result column="specification" jdbcType="CHAR" property="specification" />
+    <result column="introduction" jdbcType="VARCHAR" property="introduction" />
+    <result column="price" jdbcType="FLOAT" property="price" />
+    <result column="buyPeopleNumber" jdbcType="INTEGER" property="buypeoplenumber" />
+    <result column="detail" jdbcType="VARCHAR" property="detail" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, country, chineseName, nationalFlag, img, specification, introduction, price, 
+    buyPeopleNumber, detail
+  </sql>
+  <select id="selectAll" resultType="com.example.shopping_back.entity.DutyFreeStore">
+    SELECT * FROM duty_free_store ORDER BY id DESC
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from duty_free_store
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from duty_free_store
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.example.shopping_back.entity.DutyFreeStore" useGeneratedKeys="true">
+    insert into duty_free_store (country, chineseName, nationalFlag, 
+      img, specification, introduction, 
+      price, buyPeopleNumber, detail
+      )
+    values (#{country,jdbcType=CHAR}, #{chinesename,jdbcType=CHAR}, #{nationalflag,jdbcType=CHAR}, 
+      #{img,jdbcType=VARCHAR}, #{specification,jdbcType=CHAR}, #{introduction,jdbcType=VARCHAR}, 
+      #{price,jdbcType=FLOAT}, #{buypeoplenumber,jdbcType=INTEGER}, #{detail,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.example.shopping_back.entity.DutyFreeStore" useGeneratedKeys="true">
+    insert into duty_free_store
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="country != null">
+        country,
+      </if>
+      <if test="chinesename != null">
+        chineseName,
+      </if>
+      <if test="nationalflag != null">
+        nationalFlag,
+      </if>
+      <if test="img != null">
+        img,
+      </if>
+      <if test="specification != null">
+        specification,
+      </if>
+      <if test="introduction != null">
+        introduction,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="buypeoplenumber != null">
+        buyPeopleNumber,
+      </if>
+      <if test="detail != null">
+        detail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="country != null">
+        #{country,jdbcType=CHAR},
+      </if>
+      <if test="chinesename != null">
+        #{chinesename,jdbcType=CHAR},
+      </if>
+      <if test="nationalflag != null">
+        #{nationalflag,jdbcType=CHAR},
+      </if>
+      <if test="img != null">
+        #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="specification != null">
+        #{specification,jdbcType=CHAR},
+      </if>
+      <if test="introduction != null">
+        #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=FLOAT},
+      </if>
+      <if test="buypeoplenumber != null">
+        #{buypeoplenumber,jdbcType=INTEGER},
+      </if>
+      <if test="detail != null">
+        #{detail,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.shopping_back.entity.DutyFreeStore">
+    update duty_free_store
+    <set>
+      <if test="country != null">
+        country = #{country,jdbcType=CHAR},
+      </if>
+      <if test="chinesename != null">
+        chineseName = #{chinesename,jdbcType=CHAR},
+      </if>
+      <if test="nationalflag != null">
+        nationalFlag = #{nationalflag,jdbcType=CHAR},
+      </if>
+      <if test="img != null">
+        img = #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="specification != null">
+        specification = #{specification,jdbcType=CHAR},
+      </if>
+      <if test="introduction != null">
+        introduction = #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=FLOAT},
+      </if>
+      <if test="buypeoplenumber != null">
+        buyPeopleNumber = #{buypeoplenumber,jdbcType=INTEGER},
+      </if>
+      <if test="detail != null">
+        detail = #{detail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.shopping_back.entity.DutyFreeStore">
+    update duty_free_store
+    set country = #{country,jdbcType=CHAR},
+      chineseName = #{chinesename,jdbcType=CHAR},
+      nationalFlag = #{nationalflag,jdbcType=CHAR},
+      img = #{img,jdbcType=VARCHAR},
+      specification = #{specification,jdbcType=CHAR},
+      introduction = #{introduction,jdbcType=VARCHAR},
+      price = #{price,jdbcType=FLOAT},
+      buyPeopleNumber = #{buypeoplenumber,jdbcType=INTEGER},
+      detail = #{detail,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
