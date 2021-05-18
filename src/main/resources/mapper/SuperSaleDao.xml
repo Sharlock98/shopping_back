@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.shopping_back.dao.SuperSaleDao">
+  <resultMap id="BaseResultMap" type="com.example.shopping_back.entity.SuperSale">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="new_appear" jdbcType="INTEGER" property="newAppear" />
+    <result column="end" jdbcType="INTEGER" property="end" />
+    <result column="brand_img" jdbcType="VARCHAR" property="brandImg" />
+    <result column="name" jdbcType="CHAR" property="name" />
+    <result column="activity" jdbcType="CHAR" property="activity" />
+    <result column="start_date" jdbcType="DATE" property="startDate" />
+    <result column="end_date" jdbcType="DATE" property="endDate" />
+    <result column="poster" jdbcType="VARCHAR" property="poster" />
+    <result column="details" jdbcType="VARCHAR" property="details" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, new_appear, `end`, brand_img, `name`, activity, start_date, end_date, poster, 
+    details
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from super_sale
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from super_sale
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.example.shopping_back.entity.SuperSale" useGeneratedKeys="true">
+    insert into super_sale (new_appear, `end`, brand_img, 
+      `name`, activity, start_date, end_date, 
+      poster, details)
+    values (#{newAppear,jdbcType=INTEGER}, #{end,jdbcType=INTEGER}, #{brandImg,jdbcType=VARCHAR}, 
+      #{name,jdbcType=CHAR}, #{activity,jdbcType=CHAR}, #{startDate,jdbcType=DATE}, #{endDate,jdbcType=DATE}, 
+      #{poster,jdbcType=VARCHAR}, #{details,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.example.shopping_back.entity.SuperSale" useGeneratedKeys="true">
+    insert into super_sale
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="newAppear != null">
+        new_appear,
+      </if>
+      <if test="end != null">
+        `end`,
+      </if>
+      <if test="brandImg != null">
+        brand_img,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="activity != null">
+        activity,
+      </if>
+      <if test="startDate != null">
+        start_date,
+      </if>
+      <if test="endDate != null">
+        end_date,
+      </if>
+      <if test="poster != null">
+        poster,
+      </if>
+      <if test="details != null">
+        details,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="newAppear != null">
+        #{newAppear,jdbcType=INTEGER},
+      </if>
+      <if test="end != null">
+        #{end,jdbcType=INTEGER},
+      </if>
+      <if test="brandImg != null">
+        #{brandImg,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=CHAR},
+      </if>
+      <if test="activity != null">
+        #{activity,jdbcType=CHAR},
+      </if>
+      <if test="startDate != null">
+        #{startDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null">
+        #{endDate,jdbcType=DATE},
+      </if>
+      <if test="poster != null">
+        #{poster,jdbcType=VARCHAR},
+      </if>
+      <if test="details != null">
+        #{details,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.shopping_back.entity.SuperSale">
+    update super_sale
+    <set>
+      <if test="newAppear != null">
+        new_appear = #{newAppear,jdbcType=INTEGER},
+      </if>
+      <if test="end != null">
+        `end` = #{end,jdbcType=INTEGER},
+      </if>
+      <if test="brandImg != null">
+        brand_img = #{brandImg,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=CHAR},
+      </if>
+      <if test="activity != null">
+        activity = #{activity,jdbcType=CHAR},
+      </if>
+      <if test="startDate != null">
+        start_date = #{startDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null">
+        end_date = #{endDate,jdbcType=DATE},
+      </if>
+      <if test="poster != null">
+        poster = #{poster,jdbcType=VARCHAR},
+      </if>
+      <if test="details != null">
+        details = #{details,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.shopping_back.entity.SuperSale">
+    update super_sale
+    set new_appear = #{newAppear,jdbcType=INTEGER},
+      `end` = #{end,jdbcType=INTEGER},
+      brand_img = #{brandImg,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=CHAR},
+      activity = #{activity,jdbcType=CHAR},
+      start_date = #{startDate,jdbcType=DATE},
+      end_date = #{endDate,jdbcType=DATE},
+      poster = #{poster,jdbcType=VARCHAR},
+      details = #{details,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
