@@ -21,10 +21,16 @@ public class CommoditysController {
         list.add(service.getAllCommodity());
         return list;
     }
-    @RequestMapping(value = "/getCommodityById",method = RequestMethod.GET)
+    @RequestMapping(value = "/getCommodityById",method = RequestMethod.POST)
     private List<Object> getCommodityById(int id){
         List<Object> list =new ArrayList<>();
         list.add(service.getCommodityById(id));
+        return list;
+    }
+    @RequestMapping(value = "/getCommodityByName",method = RequestMethod.GET)
+    private List<Object> getCommodityByName(String name){
+        List<Object> list =new ArrayList<>();
+        list.add(service.getCommodityByName(name));
         return list;
     }
 }

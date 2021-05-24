@@ -7,6 +7,8 @@ import java.util.List;
 public interface CommoditysDao {
     List<Commoditys> selectAllCommodity();
 
+    List<Commoditys> selectByName(String name);
+
     int deleteByPrimaryKey(Integer id);
 
     int insert(Commoditys record);

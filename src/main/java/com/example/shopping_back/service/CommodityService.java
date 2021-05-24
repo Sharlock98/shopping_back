@@ -8,6 +8,8 @@ import java.util.List;
 public interface CommodityService {
     List<Commoditys> getAllCommodity();
 
+    List<Commoditys> getCommodityByName(String name);
+
     Commoditys getCommodityById(int id);
 
     boolean deleteCommodity(int id);

@@ -19,6 +19,11 @@ public class CommodityServiceImpl implements CommodityService {
     }
 
     @Override
+    public List<Commoditys> getCommodityByName(String name) {
+        return dao.selectByName(name);
+    }
+
+    @Override
     public Commoditys getCommodityById(int id) {
         return dao.selectByPrimaryKey(id);
     }

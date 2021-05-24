@@ -33,6 +33,9 @@
     delete from commoditys
     where id = #{id,jdbcType=INTEGER}
   </delete>
+  <select id="selectByName" resultType="com.example.shopping_back.entity.Commoditys">
+    select * from commoditys where name like concat('%',#{name},'%')
+  </select>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.example.shopping_back.entity.Commoditys" useGeneratedKeys="true">
     insert into commoditys (`name`, img, price, 
       brand, exchange_policy, category, 
