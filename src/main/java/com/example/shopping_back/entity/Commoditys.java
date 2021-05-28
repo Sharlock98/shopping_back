@@ -25,7 +25,27 @@ public class Commoditys implements Serializable {
 
     private String server;
 
+    private String[] server1;
+
+    public String[] getServer1() {
+        return server1;
+    }
+
+    public void setServer1(String[] server1) {
+        this.server1 = server1;
+    }
+
     private String specifications;
+
+    private String[] specifications1;
+
+    public String[] getSpecifications1() {
+        return specifications1;
+    }
+
+    public void setSpecifications1(String[] specifications1) {
+        this.specifications1 = specifications1;
+    }
 
     private String introduction;
 

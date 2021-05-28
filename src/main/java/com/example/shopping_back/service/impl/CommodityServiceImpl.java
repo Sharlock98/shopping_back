@@ -25,7 +25,16 @@ public class CommodityServiceImpl implements CommodityService {
 
     @Override
     public Commoditys getCommodityById(int id) {
-        return dao.selectByPrimaryKey(id);
+        //规格
+        String str1=dao.selectByPrimaryKey(id).getSpecifications();
+        String[] specifications=str1.split(",");
+        Commoditys commoditys=dao.selectByPrimaryKey(id);
+        commoditys.setSpecifications1(specifications);
+        //服务
+        String str2=dao.selectByPrimaryKey(id).getServer();
+        String[] server=str2.split(",");
+        commoditys.setServer1(server);
+        return commoditys;
     }
 
     @Override

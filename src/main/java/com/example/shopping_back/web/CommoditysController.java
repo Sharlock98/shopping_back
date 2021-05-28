@@ -21,7 +21,7 @@ public class CommoditysController {
         list.add(service.getAllCommodity());
         return list;
     }
-    @RequestMapping(value = "/getCommodityById",method = RequestMethod.POST)
+    @RequestMapping(value = "/getCommodityById",method = RequestMethod.GET)
     private List<Object> getCommodityById(int id){
         List<Object> list =new ArrayList<>();
         list.add(service.getCommodityById(id));
